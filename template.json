@@ -1,0 +1,30 @@
+{
+    "builders": [{
+      "type": "qemu",
+      "accelerator": "kvm",
+      "iso_url": "ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/13.0-RELEASE/FreeBSD-13.0-RELEASE-amd64-disc1.iso",
+      "iso_checksum": "b120c1f5d60f02c5eb5c8783a4f77bfe1b54005d583304e1f82640eb0457a70d",
+      "iso_checksum_type": "sha256",
+      "ssh_username": "freebsd",
+      "ssh_password": "freebsd",
+      "ssh_wait_timeout": "10m",
+      "disk_size": "40960",
+      "boot_wait": "5s",
+      "headless": true,
+      "http_directory": "http",
+      "output_directory": "output",
+      "qemuargs": [
+        [
+          "-display",
+          "none"
+        ]
+      ]
+    }],
+    "provisioners": [{
+      "type": "shell",
+      "inline": [
+        "echo \"virtio_blk_load=YES\" >> /boot/loader.conf"
+      ]
+    }]
+  }
+  
